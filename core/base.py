@@ -14,8 +14,10 @@ class Base:
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_PROFILE_MASK, pygame.GL_CONTEXT_PROFILE_CORE)
         self.screen = pygame.display.set_mode(screen_size, display_flags)
         pygame.display.set_caption("Graphics Window")
-        self.running = True
+        self.running = False
         self.clock = pygame.time.Clock()
+        self.time = 0
+        self.delta_time = 0
         self.input = Input()
 
     def initialize(self):
@@ -25,8 +27,11 @@ class Base:
         pass
 
     def run(self):
+        self.running = True
         self.initialize()
         while self.running:
+            self.delta_time = self.clock.get_time() / 1000
+            self.time += self.delta_time
             self.update()
 
             self.input.update()
@@ -35,6 +40,7 @@ class Base:
 
             pygame.display.flip()
             self.clock.tick(60)
+            # print("FPS:", int(self.clock.get_fps()))
 
         pygame.quit()
         sys.exit()

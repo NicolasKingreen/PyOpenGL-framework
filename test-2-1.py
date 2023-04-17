@@ -11,4 +11,3 @@ class Test(Base):
 
 
 Test().run()
-

@@ -7,14 +7,14 @@ class Test(Base):
     def initialize(self):
         print("Initializing program...")
 
-        vsCode = """
+        vs_code = """
         void main()
         {
             gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
         }
         """
 
-        fsCode = """
+        fs_code = """
         out vec4 fragColor;
         void main()
         {
@@ -22,11 +22,10 @@ class Test(Base):
         }
         """
 
-        self.programRef = OpenGLUtils.initializeProgram(vsCode, fsCode)
+        self.program_ref = OpenGLUtils.initialize_program(vs_code, fs_code)
 
-
-        vaoRef = glGenVertexArrays(1)
-        glBindVertexArray(vaoRef)
+        vao_ref = glGenVertexArrays(1)
+        glBindVertexArray(vao_ref)
 
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glPointSize(10)
@@ -34,7 +33,7 @@ class Test(Base):
     def update(self):
         glClear(GL_COLOR_BUFFER_BIT)
 
-        glUseProgram(self.programRef)
+        glUseProgram(self.program_ref)
         glDrawArrays(GL_POINTS, 0, 1)
 
 
