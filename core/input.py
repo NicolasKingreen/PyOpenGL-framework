@@ -9,6 +9,7 @@ class Input:
         self.key_pressed = []
         self.key_ups = []
 
+
     def update(self):
         self.key_downs = []
         self.key_ups = []

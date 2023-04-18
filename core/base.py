@@ -35,7 +35,7 @@ class Base:
             self.update()
 
             self.input.update()
-            if self.input.quit:
+            if self.input.quit or self.input.is_key_pressed("escape"):
                 self.running = False
 
             pygame.display.flip()
